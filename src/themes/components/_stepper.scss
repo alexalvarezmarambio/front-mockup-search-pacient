@@ -1,0 +1,77 @@
+
+.mat-step-label {
+  display: none !important;
+}
+
+.mat-typography h2.step-title,
+.mat-typography h2.step-sub-title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.mat-horizontal-content-container {
+  padding: 0 10px 10px 10px;
+}
+
+.mat-step-header[aria-selected="true"] {
+  .mat-step-icon-selected {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.59);
+  }
+}
+
+@include breakpoint.media-breakpoint-up(md) {
+  .mat-step-label {
+    display: block !important;
+    white-space: break-spaces !important;
+    .mat-step-text-label {
+      text-overflow: initial;
+      overflow: initial;
+    }
+  }
+
+  .mat-typography h2.step-title {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .mat-typography h2.step-sub-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .mat-stepper-horizontal,
+  .mat-stepper-vertical {
+    background: transparent;
+  }
+
+  .mat-step-header[aria-selected="true"] {
+    padding: 18px 24px;
+    .mat-step-icon-selected {
+      width: 32px;
+      height: 32px;
+      box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.59);
+      font-size: 1rem;
+    }
+    .mat-step-label-selected {
+      .mat-step-text-label {
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+
+  .mat-step-header .mat-step-label.mat-step-label-active {
+    color: var(--typography-color);
+  }
+}
+
+@include breakpoint.media-breakpoint-up(lg) {
+  .mat-typography h2.step-title,
+  .mat-typography h2.step-sub-title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+  }
+}

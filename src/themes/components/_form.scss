@@ -1,0 +1,21 @@
+.form-field {
+  max-width: 365px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-field-tisal {
+  width: 100%;
+  max-width: 365px;
+  .mainSelect .mat-mdc-form-field {
+    width: 100%;
+
+    .search-select {
+      width: 100%;
+    }
+  }
+}
+
+.mat-mdc-form-field.search-select {
+  width: 100%;
+}

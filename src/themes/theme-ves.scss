@@ -1,0 +1,304 @@
+@use "utils/breakpoint";
+@use "@angular/material" as mat;
+@include mat.core();
+
+$md-color-accent: (
+  50: #e0f6f5,
+  100: #b3e8e5,
+  200: #80d9d4,
+  300: #4dc9c3,
+  400: #26beb6,
+  500: #00b2a9,
+  600: #00aba2,
+  700: #00a298,
+  800: #00998f,
+  900: #008a7e,
+  A100: #b6fff8,
+  A200: #83fff3,
+  A400: #50ffee,
+  A700: #36ffec,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-color-primary: (
+  50: #ffebec,
+  100: #ffcdce,
+  200: #ffacae,
+  300: #ff8a8e,
+  400: #ff7175,
+  500: #ff585d,
+  600: #ff5055,
+  700: #ff474b,
+  800: #ff3d41,
+  900: #ff2d30,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffd9d9,
+  A700: #ffbfc0,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #000000,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$palette-primary: mat.m2-define-palette($md-color-primary, 500);
+$palette-accent: mat.m2-define-palette($md-color-accent, 500);
+$palette-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$config-typography: mat.m2-define-typography-config(
+  $font-family: "Poppins",
+);
+
+$theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: $palette-primary,
+      accent: $palette-accent,
+      warn: $palette-warn,
+    ),
+    typography: $config-typography,
+  )
+);
+
+@include mat.typography-hierarchy($config-typography);
+@include mat.all-component-themes($theme);
+
+:root {
+  --primary-color: #00b2a9;
+  --accent-color: #ff585d;
+  --primary-color-disable: #93c6c3;
+  --white-color: #ffffff;
+  --btn-border-color: #ff585d;
+  --body-bg-color: #f9f8f9;
+  --typography-color: #3b404a;
+  --card-border-color: #b6c0cc;
+  --avatar-border-color: #64768c;
+  --message-border-color: #64768c;
+  --message-warning-color: #f69841;
+  --message-error-color: #f5495c;
+  --message-error-bg-color: #fdeef0;
+  --bg-color-light: #f1f1f1;
+  --contrast-accent-color: #fff;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: var(--body-bg-color);
+}
+div {
+  box-sizing: border-box;
+}
+
+.mat-typography {
+  color: var(--typography-color);
+}
+
+.logo-clinica {
+  display: none;
+  background-size: contain;
+}
+
+.mat-mdc-outlined-button.mat-mdc-button-base {
+  padding: 20px 30px;
+}
+
+.mat-mdc-checkbox.mat-accent.mat-mdc-checkbox-checked {
+  --mdc-checkbox-selected-checkmark-color: var(--white-color);
+}
+
+.mat-mdc-unelevated-button[disabled][disabled] {
+  --mdc-filled-button-disabled-container-color: var(--primary-color-disable);
+  --mdc-filled-button-disabled-label-text-color: var(--white-color);
+  --mdc-filled-button-container-color: rgba(0, 0, 0, 0.12);
+  --mdc-filled-button-label-text-color: rgba(0, 0, 0, 0.38);
+}
+
+.mat-mdc-unelevated-button.mat-primary {
+  --mdc-filled-button-label-text-color: var(--white-color);
+}
+
+input[type="radio"]:checked + label {
+  color: var(--primary-color);
+}
+
+@include breakpoint.media-breakpoint-up(md) {
+  .logo-clinica {
+    display: block;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 30px;
+  }
+
+  .mat-mdc-unelevated-button.mat-mdc-button-base,
+  .mat-mdc-outlined-button.mat-mdc-button-base {
+    padding: 20px 22px;
+    border: 1px solid var(--btn-border-color);
+  }
+}
+
+@include breakpoint.media-breakpoint-up(lg) {
+  ::ng-deep.mat-mdc-outlined-button:not(:disabled).show-perfil {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  .logo-clinica {
+    width: 194px;
+    height: 87px;
+  }
+
+  .mat-mdc-unelevated-button.mat-mdc-button-base,
+  .mat-mdc-outlined-button.mat-mdc-button-base {
+    padding: 20px 40px;
+    border: 1px solid var(--btn-border-color);
+  }
+}
+
+// section branches colors
+$branches-color: (
+  0: #545c66,
+  1: #575756,
+);
+
+// Branch name
+.branch-color {
+  @each $key, $value in $branches-color {
+    &.color-#{$key} {
+      color: $value;
+    }
+  }
+}
+
+// Calendar
+.calendar-date-color {
+  @each $key, $value in $branches-color {
+    &.color-#{$key} .mat-calendar-body-cell-content {
+      background-color: $value;
+      font-weight: 700;
+      color: white;
+    }
+  }
+}
+
+// Tooltips
+.tooltip .tooltip-content {
+  display: none;
+}
+
+@include breakpoint.media-breakpoint-up(lg) {
+  tr > td:first-of-type > .tooltip .tooltip-content {
+    left: 0;
+    margin-left: 0;
+  }
+
+  tr > td:nth-of-type(2) > .tooltip .tooltip-content {
+    left: 50%;
+    margin-left: -100px;
+  }
+
+  tr > td:nth-of-type(6) > .tooltip .tooltip-content {
+    right: 50%;
+    margin-right: -100px;
+    margin-left: 0;
+    left: auto;
+  }
+
+  tr > td:nth-of-type(7) > .tooltip .tooltip-content,
+  tr:first-of-type > td:last-of-type > .tooltip .tooltip-content {
+    right: 0;
+    margin-left: 0;
+    left: auto;
+  }
+
+  .tooltip {
+    z-index: 3;
+
+    .tooltip-content {
+      visibility: hidden;
+      text-align: center;
+      border-radius: 0.5rem;
+      position: absolute;
+      left: 50%;
+      bottom: 120%;
+      z-index: 1;
+      width: 270px;
+      margin-left: -135px;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+
+      & > .tooltip-wrapper {
+        padding: 0.875rem;
+
+        p {
+          text-align: left;
+          margin-bottom: 0.2rem;
+          font-weight: 500;
+
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    &:hover .tooltip-content {
+      visibility: visible;
+    }
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      top: -25%;
+      left: calc(50% - 1rem);
+      width: 0;
+      height: 0;
+      border-left: 0.8rem solid transparent;
+      border-right: 0.8rem solid transparent;
+
+      border-top: 1.2rem solid black;
+    }
+
+    @each $key, $value in $branches-color {
+      .tooltip-content > .tooltip-wrapper.color-#{$key} {
+        background-color: $value;
+        color: white;
+      }
+      &.arrow-color-#{$key}:hover::after {
+        border-top-color: $value;
+      }
+    }
+  }
+}

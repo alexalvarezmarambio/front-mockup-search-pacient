@@ -1,0 +1,102 @@
+<div class="content">
+  <div class="left-content">
+    <div class="data-patient">
+      <div class="data-patient-header">
+        <span>DATOS DEL PACIENTE</span>
+      </div>
+      <div class="data-patient-body">
+        <span><strong>Andrés Morales Parra</strong></span>
+        <span>RUT: 12.345.678-5</span>
+        <br style="height: 2em" />
+        <span><strong>CONSULTA</strong></span>
+        <span>Dermatología Telemedicina</span>
+        <br style="height: 2em" />
+        <span><strong>PROFESIONAL</strong></span>
+        <span>Alberto Pastene Durán</span>
+      </div>
+    </div>
+    <div class="data-hour">
+      <div class="data-hour-header">
+        <span>HORA DE TU ATENCIÓN</span>
+      </div>
+      <div class="data-hour-body">
+        <mat-icon class="icon">calendar_month</mat-icon>
+        <div class="data-hour-body-info">
+          <span>11:30 hrs.</span>
+          <span>Sábado</span>
+          <span>13.09.2025</span>
+        </div>
+      </div>
+    </div>
+
+    <button mat-flat-button color="primary" routerLink="/main/mfa">
+      Volver
+    </button>
+  </div>
+  <div class="right-content">
+    <span class="right-content-title">Tu cita se ha reservado con éxito</span>
+    <p class="right-content-paragraph">
+      Si tiene documentos, pruebas o fotos que quiera compartir con su médico,
+      cárguelos aquí.
+    </p>
+    <div class="right-content-button">
+      <button class="right-content-button-btn" (click)="fileInput.click()">
+        <mat-icon class="btn-icon">upload_file</mat-icon>
+        <span>Subir archivo</span>
+      </button>
+
+      <input
+        #fileInput
+        type="file"
+        multiple
+        accept=".jpg, .png, .pdf"
+        hidden
+        (change)="uploadFile($event)"
+      />
+    </div>
+
+    <div class="right-content-table">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="document">
+          <th mat-header-cell *matHeaderCellDef>Documento</th>
+          <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Fecha</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.lastModifiedDate | date : "dd/MM/yyyy HH:mm" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="size">
+          <th mat-header-cell *matHeaderCellDef>Tamaño</th>
+          <td mat-cell *matCellDef="let row">{{ mapSize(row.size) }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Acción</th>
+          <td mat-cell *matCellDef="let row; let i = index">
+            <button mat-mini-fab color="primary" (click)="delete(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+      </table>
+    </div>
+
+    <div class="right-content-total">
+      <span class="right-content-total-txt">Tamaño total de archivos: </span>
+      <span class="right-content-total-number">{{ getTotal() }}</span>
+    </div>
+
+    <div class="right-content-save">
+      <button mat-flat-button color="primary" routerLink="/main/mfa">
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>

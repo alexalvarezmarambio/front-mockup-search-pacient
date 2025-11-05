@@ -1,0 +1,18 @@
+@use "breakpoint";
+@use "utility";
+
+$display: () !default;
+$display: map-merge(
+  (
+    "display": (
+      responsive: true,
+      property: display,
+      class: display,
+      values: inline inline-block block grid inline-grid table table-row
+        table-cell flex inline-flex none,
+    ),
+  ),
+  $display
+);
+
+@include utility.generate-utilities($display);

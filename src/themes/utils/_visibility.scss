@@ -1,0 +1,11 @@
+@use "breakpoint";
+@use "utility";
+
+$visibility: (
+  "visibility": (
+    property: visibility,
+    values: visible hidden,
+  ),
+);
+
+@include utility.generate-utilities($visibility);

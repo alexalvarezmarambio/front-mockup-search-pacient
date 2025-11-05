@@ -1,0 +1,26 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: 2em;
+  font-weight: 600;
+  padding: 20px 20%;
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  padding: 30px 20%;
+  overflow: auto;
+}

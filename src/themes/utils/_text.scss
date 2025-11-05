@@ -1,0 +1,47 @@
+@use "breakpoint";
+@use "utility";
+
+$text: (
+  "text-align": (
+    responsive: true,
+    property: text-align,
+    class: text,
+    values: (
+      start: left,
+      end: right,
+      center: center,
+    ),
+  ),
+  "white-space": (
+    property: white-space,
+    class: text,
+    values: (
+      wrap: normal,
+      nowrap: nowrap,
+    ),
+  ),
+  "text-transform": (
+    responsive: true,
+    property: text-transform,
+    class: text,
+    values: lowercase uppercase capitalize,
+  ),
+  "font-weight": (
+    responsive: true,
+    property: font-weight,
+    class: fw,
+    values: (
+      thin: 100,
+      extralight: 200,
+      light: 300,
+      regular: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+      extrabold: 800,
+      bolder: 900,
+    ),
+  ),
+);
+
+@include utility.generate-utilities($text);

@@ -1,0 +1,308 @@
+@use "utils/breakpoint";
+@use "@angular/material" as mat;
+@include mat.core();
+
+$md-color-primary: (
+  50: #e0eaf3,
+  100: #b3cbe1,
+  200: #80a9cd,
+  300: #4d86b9,
+  400: #266caa,
+  500: #00529b,
+  600: #004b93,
+  700: #004189,
+  800: #00387f,
+  900: #00286d,
+  A100: #9cb8ff,
+  A200: #6993ff,
+  A400: #366eff,
+  A700: #1d5bff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$md-color-accent: (
+  50: #e6f6f5,
+  100: #bfe9e6,
+  200: #95dad5,
+  300: #6bcbc4,
+  400: #4bbfb8,
+  500: #2bb4ab,
+  600: #26ada4,
+  700: #20a49a,
+  800: #1a9c91,
+  900: #108c80,
+  A100: #befff8,
+  A200: #8bfff2,
+  A400: #58ffed,
+  A700: #3fffea,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$palette-primary: mat.m2-define-palette($md-color-primary, 500);
+$palette-accent: mat.m2-define-palette($md-color-accent, 500);
+$palette-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$config-typography: mat.m2-define-typography-config(
+  $font-family: "Poppins",
+);
+
+$theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: $palette-primary,
+      accent: $palette-accent,
+      warn: $palette-warn,
+    ),
+    typography: $config-typography,
+  )
+);
+
+@include mat.typography-hierarchy($config-typography);
+@include mat.all-component-themes($theme);
+
+:root {
+  --primary-color: #00529b;
+  --accent-color: #2bb4ab;
+  --primary-color-disable: #7a95ab;
+  --white-color: #ffffff;
+  --btn-border-color: #3b404a;
+  --body-bg-color: #f9f8f9;
+  --typography-color: #3b404a;
+  --card-border-color: #b6c0cc;
+  --avatar-border-color: #64768c;
+  --message-border-color: #64768c;
+  --message-warning-color: #f69841;
+  --message-error-color: #f5495c;
+  --bg-color-light: #f1f1f1;
+  --contrast-primary-color: #fff;
+  --contrast-accent-color: #fff;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: var(--body-bg-color);
+}
+div {
+  box-sizing: border-box;
+}
+
+.mat-typography {
+  color: var(--typography-color);
+}
+
+.logo-clinica {
+  display: none;
+}
+
+.mat-mdc-outlined-button.mat-mdc-button-base {
+  padding: 20px 30px;
+}
+
+.mat-mdc-checkbox.mat-accent.mat-mdc-checkbox-checked {
+  --mdc-checkbox-selected-checkmark-color: var(--white-color);
+}
+
+.mat-mdc-unelevated-button[disabled][disabled] {
+  --mdc-filled-button-disabled-container-color: var(--primary-color-disable);
+  --mdc-filled-button-disabled-label-text-color: var(--white-color);
+  --mdc-filled-button-container-color: rgba(0, 0, 0, 0.12);
+  --mdc-filled-button-label-text-color: rgba(0, 0, 0, 0.38);
+}
+
+.mat-mdc-unelevated-button.mat-primary {
+  --mdc-filled-button-label-text-color: var(--white-color);
+}
+
+@include breakpoint.media-breakpoint-up(md) {
+  .logo-clinica {
+    display: block;
+    background-repeat: round;
+    width: 106px;
+    height: 32px;
+  }
+
+  .mat-mdc-unelevated-button.mat-mdc-button-base,
+  .mat-mdc-outlined-button.mat-mdc-button-base {
+    padding: 20px 22px;
+    border: 1px solid var(--btn-border-color);
+  }
+}
+
+@include breakpoint.media-breakpoint-up(lg) {
+  ::ng-deep.mat-mdc-outlined-button:not(:disabled).show-perfil {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .logo-clinica {
+    width: 127px;
+    height: 38px;
+  }
+
+  .mat-mdc-unelevated-button.mat-mdc-button-base,
+  .mat-mdc-outlined-button.mat-mdc-button-base {
+    padding: 20px 40px;
+    border: 1px solid var(--btn-border-color);
+  }
+}
+
+// section branches colors
+$branches-color: (
+  6: (
+    0: #64768c,
+    1: #2bb4ab,
+  ),
+);
+
+// Branch name
+.branch-color {
+  @each $codEmpresa, $branches in $branches-color {
+    @each $codSucursal, $color in $branches {
+      &.color-#{$codEmpresa}-#{$codSucursal} {
+        color: $color;
+      }
+    }
+  }
+}
+
+// Calendar
+.calendar-date-color {
+  @each $codEmpresa, $branches in $branches-color {
+    @each $codSucursal, $color in $branches {
+      &.color-#{$codEmpresa}-#{$codSucursal} .mat-calendar-body-cell-content {
+        background-color: $color;
+        font-weight: 700;
+        color: white;
+      }
+    }
+  }
+}
+
+// Tooltips
+.tooltip .tooltip-content {
+  display: none;
+}
+
+@include breakpoint.media-breakpoint-up(lg) {
+  tr > td:first-of-type > .tooltip .tooltip-content {
+    left: 0;
+    margin-left: 0;
+  }
+
+  tr > td:nth-of-type(2) > .tooltip .tooltip-content {
+    left: 50%;
+    margin-left: -100px;
+  }
+
+  tr > td:nth-of-type(6) > .tooltip .tooltip-content {
+    right: 50%;
+    margin-right: -100px;
+    margin-left: 0;
+    left: auto;
+  }
+
+  tr > td:nth-of-type(7) > .tooltip .tooltip-content,
+  tr:first-of-type > td:last-of-type > .tooltip .tooltip-content {
+    right: 0;
+    margin-left: 0;
+    left: auto;
+  }
+
+  .tooltip {
+    z-index: 3;
+
+    .tooltip-content {
+      visibility: hidden;
+      text-align: center;
+      border-radius: 0.5rem;
+      position: absolute;
+      left: 50%;
+      bottom: 120%;
+      z-index: 1;
+      width: 270px;
+      margin-left: -135px;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+
+      & > .tooltip-wrapper {
+        padding: 0.875rem;
+        font-weight: 500;
+
+        p {
+          text-align: left;
+          margin-bottom: 0.2rem;
+
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    &:hover .tooltip-content {
+      visibility: visible;
+    }
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      top: -25%;
+      left: calc(50% - 1rem);
+      width: 0;
+      height: 0;
+      border-left: 0.8rem solid transparent;
+      border-right: 0.8rem solid transparent;
+
+      border-top: 1.2rem solid black;
+    }
+
+    @each $codEmpresa, $branches in $branches-color {
+      @each $codSucursal, $color in $branches {
+        .tooltip-content
+          > .tooltip-wrapper.color-#{$codEmpresa}-#{$codSucursal} {
+          background-color: $color;
+          color: white;
+        }
+        &.arrow-color-#{$codEmpresa}-#{$codSucursal}:hover::after {
+          border-top-color: $color;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@use "sass:map";
+@use "sass:list";
+@use "breakpoint";
+
+@mixin generate-utilities($utilities) {
+  @each $key, $utility in $utilities {
+    $properties: map.get($utility, property);
+    $values: map.get($utility, values);
+
+    @if type-of($values) == "string" or type-of(nth($values, 1)) != "list" {
+      $values: zip($values, $values);
+    }
+
+    $property-class: if(
+      map.get($utility, class),
+      map.get($utility, class),
+      $key
+    );
+    $property-class-modifier: if(
+      $property-class == "" or $property-class == null,
+      "",
+      "-"
+    );
+
+    $important: if(
+      map.get($utility, important) == null,
+      !important,
+      if(map.get($utility, important), !important, null)
+    );
+
+    @each $size, $value in $values {
+      .#{$property-class + $property-class-modifier + $size} {
+        @each $property in $properties {
+          #{$property}: if($value, $value, $size) $important;
+        }
+      }
+    }
+    @if map.get($utility, responsive) {
+      @each $breakpoint in map-keys(breakpoint.$grid-breakpoints) {
+        @include breakpoint.media-breakpoint-up($breakpoint) {
+          @each $size, $value in $values {
+            .#{$property-class
+              + $property-class-modifier}#{$breakpoint}-#{$size} {
+              @each $property in $properties {
+                #{$property}: if($value, $value, $size) $important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
