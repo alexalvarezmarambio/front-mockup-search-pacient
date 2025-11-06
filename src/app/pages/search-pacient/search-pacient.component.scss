@@ -1,0 +1,25 @@
+:host {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .title {
+    font-size: 2em;
+    font-weight: 500;
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 20px 0;
+}

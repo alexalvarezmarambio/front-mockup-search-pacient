@@ -5,17 +5,35 @@
 }
 
 .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: var(--primary-color);
   color: var(--white-color);
   font-size: 2em;
   font-weight: 600;
   padding: 20px 20%;
 
-  .icon {
-    width: 40px;
-    height: 40px;
-    font-size: 40px;
+  .header-title {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      font-size: 40px;
+    }
   }
+
+  .header-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
 }
 
 .wrapper {

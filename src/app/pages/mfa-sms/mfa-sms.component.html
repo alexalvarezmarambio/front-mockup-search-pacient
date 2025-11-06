@@ -1,0 +1,53 @@
+<div class="display-flex justify-content-center align-items-center w-100 h-100">
+  <div class="box-form">
+    <div class="image-logo">
+      <span>LOGO</span>
+      <span>CLÍNICA</span>
+    </div>
+    <p class="title-txt">Bienvenido a búsqueda de pacientes</p>
+    <p>Para comenzar, por favor valide su identidad.</p>
+
+    <div class="display-flex flex-column align-items-center mt-5 w-100">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Número de Teléfono</mat-label>
+        <input matInput type="number" />
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" (click)="validateSms()">
+        Enviar
+      </button>
+    </div>
+
+    <div class="display-flex flex-column align-items-center mt-3 w-100">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Código SMS</mat-label>
+        <input matInput type="number" [readonly]="disableSms" />
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="disableSms"
+        (click)="validateRut()"
+      >
+        Validar
+      </button>
+    </div>
+
+    <div class="display-flex flex-column align-items-center mt-3 w-100">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Rut del paciente</mat-label>
+        <input matInput type="text" [readonly]="disableRut" />
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="disableRut"
+        routerLink="/main/search-pacient"
+      >
+        Consultar
+      </button>
+    </div>
+  </div>
+</div>

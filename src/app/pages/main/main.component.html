@@ -1,7 +1,18 @@
 <div class="layout">
-  <div class="display-flex align-items-center g-5 header">
-    <mat-icon class="icon">add_to_queue</mat-icon>
-    <span>Búsqueda de pacientes clínica</span>
+  <div class="header">
+    <div class="header-title">
+      <mat-icon class="icon">add_to_queue</mat-icon>
+      <span>Búsqueda de pacientes quirúrgicos</span>
+    </div>
+
+    <div class="header-btn">
+      <button mat-flat-button color="primary" routerLink="/main/mfa-sms">
+        SMS
+      </button>
+      <button mat-flat-button color="primary" routerLink="/main/mfa">
+        Documento
+      </button>
+    </div>
   </div>
 
   <div class="wrapper">
