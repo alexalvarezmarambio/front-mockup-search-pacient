@@ -22,4 +22,18 @@
   background-color: #fff;
   border-radius: 5px;
   margin: 20px 0;
+  gap: 30px;
+
+  .header-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+
+    .info-card {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
 }

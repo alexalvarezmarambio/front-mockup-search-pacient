@@ -39,15 +39,21 @@
         <mat-label>Rut del paciente</mat-label>
         <input matInput type="text" [readonly]="disableRut" />
       </mat-form-field>
-
-      <button
-        mat-flat-button
-        color="primary"
-        [disabled]="disableRut"
-        routerLink="/main/search-pacient"
-      >
-        Consultar
-      </button>
     </div>
+
+    <h5>
+      Al presionar Consultar acepta los
+      <a class="link" (click)="modalPolitics()"> términos y condiciones </a>
+      del servicio.
+    </h5>
+
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="disableRut"
+      routerLink="/main/search-pacient"
+    >
+      Consultar
+    </button>
   </div>
 </div>

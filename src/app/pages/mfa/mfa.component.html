@@ -19,10 +19,16 @@
         <mat-label>Número de documento</mat-label>
         <input matInput type="text" />
       </mat-form-field>
-
-      <button mat-flat-button color="primary" routerLink="/main/search-pacient">
-        Enviar
-      </button>
     </div>
+
+    <h5>
+      Al presionar Enviar acepta los
+      <a class="link" (click)="modalPolitics()"> términos y condiciones </a>
+      del servicio.
+    </h5>
+
+    <button mat-flat-button color="primary" routerLink="/main/search-pacient">
+      Enviar
+    </button>
   </div>
 </div>

@@ -1,12 +1,32 @@
 <div class="header">
-  <h1 class="title">Pacientes</h1>
+  <h1 class="title">Información Paciente</h1>
 </div>
 
 <div class="table">
+  <div class="header-card">
+    <h2>
+      <strong>Paciente: </strong>{{ hospitalizations.namePacient | uppercase }}
+    </h2>
+    <div class="info-card">
+      <span>
+        <strong>Id Ingreso: </strong> {{ hospitalizations.idAdmission }}
+      </span>
+
+      <span>
+        <strong>Médico tratante: </strong>
+        {{ hospitalizations.nameProfesional | uppercase }}
+      </span>
+    </div>
+  </div>
   <table mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef>Fecha</th>
-      <td mat-cell *matCellDef="let row">{{ row.date }}</td>
+    <ng-container matColumnDef="dateIn">
+      <th mat-header-cell *matHeaderCellDef>Fecha entrada</th>
+      <td mat-cell *matCellDef="let row">{{ row.dateIn }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateOut">
+      <th mat-header-cell *matHeaderCellDef>Fecha salida</th>
+      <td mat-cell *matCellDef="let row">{{ row.dateOut }}</td>
     </ng-container>
 
     <ng-container matColumnDef="unit">
@@ -27,11 +47,6 @@
     <ng-container matColumnDef="bed">
       <th mat-header-cell *matHeaderCellDef>Cama</th>
       <td mat-cell *matCellDef="let row">{{ row.bed }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="pacient">
-      <th mat-header-cell *matHeaderCellDef>Paciente</th>
-      <td mat-cell *matCellDef="let row">{{ row.pacient }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columns"></tr>

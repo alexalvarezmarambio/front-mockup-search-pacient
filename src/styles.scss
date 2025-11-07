@@ -1,4 +1,3 @@
-
 @use "themes/utils/breakpoint";
 @import "themes/theme.scss";
 
@@ -11,5 +10,19 @@
 @import "themes/utils/visibility";
 @import "themes/utils/display";
 
-html, body { height: 100%; margin: 0; padding: 0; }
-body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.link {
+  color: #ff585d;
+  text-decoration: underline;
+  cursor: pointer;
+}
