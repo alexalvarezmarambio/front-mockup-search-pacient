@@ -1,0 +1,38 @@
+.modal-icon {
+  width: 94px;
+  height: 94px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  margin-right: auto;
+
+  &.error {
+    border-radius: 50%;
+    background-color: rgba(245, 73, 92, 0.2);
+    background-image: url("/icon_error_modal.svg");
+    background-size: 38px;
+  }
+
+  &.check {
+    border-radius: 50%;
+    background-color: rgba(24, 99, 77, 0.2);
+    background-image: url("/icon_check_modal.svg");
+    background-size: 38px;
+  }
+
+  &.warn {
+    border-radius: 50%;
+    background-color: rgba(236, 181, 0, 0.2);
+    background-image: url("/icon_warn_modal.svg");
+    background-size: 90px;
+  }
+}
+
+button {
+  min-width: 180px;
+}
+
+.title-modal {
+  width: 100%;
+  text-align: center;
+}

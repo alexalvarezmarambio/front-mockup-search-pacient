@@ -17,7 +17,8 @@ import { RouterLink } from "@angular/router";
 })
 export class SearchPacientComponent implements OnInit {
 
-  hospitalizations: Hospitalization = {
+  hospitalizations: Hospitalization[] = [
+    {
     idAdmission: 123456,
     namePacient: 'Leonardo Adrián Rodríguez Iacobitti',
     nameProfesional: 'Dr. José Marcelo Salas Melinao',
@@ -47,13 +48,27 @@ export class SearchPacientComponent implements OnInit {
         bed: 1,
       }
     ]
-  };
+  },
+  {
+    idAdmission: 98764,
+    namePacient: 'Isabel Elisa Parra Mora',
+    nameProfesional: 'Dr. José Marcelo Salas Melinao',
+    admissions: [
+      {
+        dateIn: '10-10-2025 08:00',
+        dateOut: '-',
+        unit: 'Medicina Interna',
+        floor: 1,
+        room: 5,
+        bed: 1,
+      }
+    ]
+  }
+  ];
 
-  dataSource!: MatTableDataSource<Admission>;
   columns = ['dateIn', 'dateOut', 'unit', 'floor', 'room', 'bed'];
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(this.hospitalizations.admissions.reverse());
   }
 }
 

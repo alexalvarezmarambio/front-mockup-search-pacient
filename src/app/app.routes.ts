@@ -14,7 +14,7 @@ export const routes: Routes = [
       { path: 'mfa-sms', component: MfaSmsComponent },
       { path: 'upload-file', component: UploadFileComponent},
       { path: 'search-pacient', component: SearchPacientComponent },
-      { path: '', redirectTo: 'mfa', pathMatch: 'full'}
+      { path: '', redirectTo: 'mfa-sms', pathMatch: 'full'}
     ]
   },
   { path: '', redirectTo: 'main', pathMatch: 'full' }

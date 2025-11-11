@@ -1,19 +1,26 @@
 <div class="display-flex justify-content-center align-items-center w-100 h-100">
   <div class="box-form">
     <div class="image-logo">
-      <span>LOGO</span>
-      <span>CLÍNICA</span>
+      <img
+        src="https://www.davila.cl/wp-content/uploads/2021/11/logo-davila.svg"
+        alt=""
+      />
     </div>
     <p class="title-txt">Bienvenido a búsqueda de pacientes</p>
     <p>Para comenzar, por favor valide su identidad.</p>
 
-    <div class="display-flex flex-column align-items-center mt-5 w-100">
+    <div class="display-flex flex-column align-items-center mt-3 w-100">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Número de Teléfono</mat-label>
-        <input matInput type="number" />
+        <mat-label>Rut</mat-label>
+        <input matInput type="text" [formControl]="rutCtrl" mask-rut />
+        @if (rutCtrl.hasError('required') && rutCtrl.touched) {
+        <mat-error>Campo obligatorio.</mat-error>
+        } @if (rutCtrl.hasError('invalidRut') && rutCtrl.touched) {
+        <mat-error>Rut incorrecto.</mat-error>
+        }
       </mat-form-field>
 
-      <button mat-flat-button color="primary" (click)="validateSms()">
+      <button mat-flat-button color="primary" (click)="validateRut()">
         Enviar
       </button>
     </div>
@@ -21,39 +28,44 @@
     <div class="display-flex flex-column align-items-center mt-3 w-100">
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Código SMS</mat-label>
-        <input matInput type="number" [readonly]="disableSms" />
-      </mat-form-field>
+        <input
+          matInput
+          type="text"
+          maxlength="6"
+          [formControl]="codeCtrl"
+          [readonly]="disableSms"
+        />
 
-      <button
-        mat-flat-button
-        color="primary"
-        [disabled]="disableSms"
-        (click)="validateRut()"
-      >
-        Validar
-      </button>
+        @if (codeCtrl.hasError('required') && codeCtrl.touched) {
+        <mat-error>Campo obligatorio.</mat-error>
+        } @if (seconds > 0) {
+        <mat-hint
+          >Tiene <strong>{{ seconds }} seg.</strong> para ingresar el código
+          enviado al teléfono xxxx1234</mat-hint
+        >
+        } @if (reSend) {
+        <mat-hint
+          >Puede reingresar el código o solicitar uno nuevo
+          <button mat-button (click)="validateRut()">aquí</button>
+        </mat-hint>
+        }
+      </mat-form-field>
     </div>
 
-    <div class="display-flex flex-column align-items-center mt-3 w-100">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Rut del paciente</mat-label>
-        <input matInput type="text" [readonly]="disableRut" />
-      </mat-form-field>
-    </div>
+    <button
+      class="mt-5"
+      mat-flat-button
+      color="primary"
+      [disabled]="disableSms"
+      (click)="validateSms()"
+    >
+      Validar
+    </button>
 
     <h5>
-      Al presionar Consultar acepta los
+      Al presionar <strong>Validar</strong> acepta los
       <a class="link" (click)="modalPolitics()"> términos y condiciones </a>
       del servicio.
     </h5>
-
-    <button
-      mat-flat-button
-      color="primary"
-      [disabled]="disableRut"
-      routerLink="/main/search-pacient"
-    >
-      Consultar
-    </button>
   </div>
 </div>

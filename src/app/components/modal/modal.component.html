@@ -1,0 +1,35 @@
+<div mat-dialog-content class="pt-5">
+  <div
+    class="mb-4 modal-icon"
+    [ngClass]="{
+      warn: type == 'warn',
+      error: type == 'error',
+      check: type == 'check'
+    }"
+  ></div>
+
+  <h2 class="title-modal" [innerHTML]="title"></h2>
+  <p class="text-modal" [innerHTML]="text"></p>
+</div>
+<div class="px-5 pb-4 text-center">
+  @if (showCancelButton) {
+  <button
+    mat-flat-button
+    [mat-dialog-close]="false"
+    color="primary"
+    class="text-white mx-2"
+  >
+    Cancelar
+  </button>
+  }
+
+  <button
+    mat-flat-button
+    cdkFocusInitial
+    class="text-white mx-2"
+    [mat-dialog-close]="true"
+    color="primary"
+  >
+    Aceptar
+  </button>
+</div>
