@@ -67,6 +67,7 @@ export class MfaSmsComponent {
 
   validateRut() {
     this.reSend = false;
+    clearInterval(this.idInterval);
 
     if (this.rutCtrl.invalid) {
       this.rutCtrl.markAllAsTouched();
