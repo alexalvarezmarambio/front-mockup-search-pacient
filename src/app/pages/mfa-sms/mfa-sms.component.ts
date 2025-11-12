@@ -53,6 +53,7 @@ export class MfaSmsComponent {
       dialogRef.afterClosed().subscribe({
         next: (res) => {
           this.codeCtrl.setValue(undefined);
+          clearInterval(this.idInterval);
           this.seconds = 0;
           this.reSend = true;
         }
