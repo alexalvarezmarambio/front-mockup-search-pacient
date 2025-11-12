@@ -38,18 +38,20 @@
 
         @if (codeCtrl.hasError('required') && codeCtrl.touched) {
         <mat-error>Campo obligatorio.</mat-error>
-        } @if (seconds > 0) {
-        <mat-hint
-          >Tiene <strong>{{ seconds }} seg.</strong> para ingresar el código
-          enviado al teléfono xxxx1234</mat-hint
-        >
-        } @if (reSend) {
-        <mat-hint
-          >Puede reingresar el código o solicitar uno nuevo
-          <button mat-button (click)="validateRut()">aquí</button>
-        </mat-hint>
         }
       </mat-form-field>
+
+      @if (seconds > 0) {
+      <mat-hint
+        >Tiene <strong>{{ seconds }} seg.</strong> para ingresar el código
+        enviado al teléfono xxxx1234</mat-hint
+      >
+      } @if (reSend) {
+      <mat-hint
+        >Puede reingresar el código o solicitar uno nuevo
+        <button mat-button (click)="validateRut()">aquí</button>
+      </mat-hint>
+      }
     </div>
 
     <button
