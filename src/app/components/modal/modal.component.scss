@@ -9,21 +9,21 @@
   &.error {
     border-radius: 50%;
     background-color: rgba(245, 73, 92, 0.2);
-    background-image: url("/icon_error_modal.svg");
+    background-image: url("/front-mockup-search-pacient/icon_error_modal.svg");
     background-size: 38px;
   }
 
   &.check {
     border-radius: 50%;
     background-color: rgba(24, 99, 77, 0.2);
-    background-image: url("/icon_check_modal.svg");
+    background-image: url("/front-mockup-search-pacient/icon_check_modal.svg");
     background-size: 38px;
   }
 
   &.warn {
     border-radius: 50%;
     background-color: rgba(236, 181, 0, 0.2);
-    background-image: url("/icon_warn_modal.svg");
+    background-image: url("/front-mockup-search-pacient/icon_warn_modal.svg");
     background-size: 90px;
   }
 }
