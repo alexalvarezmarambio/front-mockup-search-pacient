@@ -11,7 +11,7 @@
 
     <div class="display-flex flex-column align-items-center mt-3 w-100">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Rut</mat-label>
+        <mat-label>Rut del paciente</mat-label>
         <input matInput type="text" [formControl]="rutCtrl" mask-rut />
         @if (rutCtrl.hasError('required') && rutCtrl.touched) {
         <mat-error>Campo obligatorio.</mat-error>
