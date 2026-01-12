@@ -5,6 +5,7 @@ import { UploadFileComponent } from './pages/upload-file/upload-file.component';
 import { SearchPacientComponent } from './pages/search-pacient/search-pacient.component';
 import { MfaSmsComponent } from './pages/mfa-sms/mfa-sms.component';
 import { DownloadFileComponent } from './pages/download-file/download-file.component';
+import { SecurityQuestionComponent } from './pages/security-question/security-question.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,7 @@ export const routes: Routes = [
       { path: 'upload-file', component: UploadFileComponent },
       { path: 'search-pacient', component: SearchPacientComponent },
       { path: 'download-file', component: DownloadFileComponent },
+      { path: 'security-question', component: SecurityQuestionComponent },
       { path: '', redirectTo: 'mfa', pathMatch: 'full' },
     ],
   },

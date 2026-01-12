@@ -1,0 +1,53 @@
+:host {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .buttons {
+    display: flex;
+    gap: 5px;
+  }
+
+  .title {
+    font-size: 2em;
+    font-weight: 500;
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 200px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 20px 0;
+  gap: 30px;
+
+  .header-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+
+    .info-card {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.btn-send {
+  display: flex;
+  justify-content: flex-end;
+}
