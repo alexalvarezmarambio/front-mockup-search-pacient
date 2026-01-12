@@ -1,0 +1,40 @@
+<div class="header">
+  <h1 class="title">Archivos Pacientes</h1>
+  <div class="buttons">
+    <a
+      mat-flat-button
+      color="primary"
+      href="/front-mockup-search-pacient/doc_prueba.zip"
+      download="archivos_paciente.zip"
+      class="btn-download"
+    >
+      Descargar Todo
+    </a>
+    <button mat-flat-button routerLink="/main/mfa">Volver</button>
+  </div>
+</div>
+
+<div class="table">
+  <div class="header-card">
+    <h2><strong>Paciente: </strong>José Marcelo Salas Melinao</h2>
+  </div>
+  <table mat-table [dataSource]="patientFiles">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fileName">
+      <th mat-header-cell *matHeaderCellDef>Nombre de archivo</th>
+      <td mat-cell *matCellDef="let row">{{ row.fileName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Fecha creación</th>
+      <td mat-cell *matCellDef="let row">{{ row.date }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="cols"></tr>
+    <tr mat-row *matRowDef="let row; columns: cols"></tr>
+  </table>
+</div>
