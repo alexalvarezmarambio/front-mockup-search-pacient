@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-download-file',
-  imports: [MatButtonModule, MatTableModule, RouterLink],
+  imports: [MatButtonModule, MatTableModule],
   templateUrl: './download-file.component.html',
   styleUrl: './download-file.component.scss',
 })
 export class DownloadFileComponent {
+  appSvc = inject(AppService);
+  router = inject(Router);
   cols = ['id', 'fileName', 'date'];
   patientFiles: PatientFile[] = [
     {
@@ -38,6 +41,11 @@ export class DownloadFileComponent {
       date: '2024-01-12',
     },
   ];
+
+  back() {
+    this.appSvc.isValid = false;
+    this.router.navigateByUrl('/main/mfa');
+  }
 }
 
 export interface PatientFile {

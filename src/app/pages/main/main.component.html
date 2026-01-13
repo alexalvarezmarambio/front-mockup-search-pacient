@@ -4,6 +4,10 @@
       <mat-icon class="icon">add_to_queue</mat-icon>
       <span>Portal consulta de documentos</span>
     </div>
+
+    @if (appSvc.isValid) {
+      <app-timer />
+    }
   </div>
 
   <div class="wrapper">

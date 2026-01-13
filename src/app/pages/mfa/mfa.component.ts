@@ -8,14 +8,9 @@ import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mfa',
-  imports: [
-    MatFormFieldModule,
-    MatInput,
-    MatButtonModule,
-    RouterLink
-],
+  imports: [MatFormFieldModule, MatInput, MatButtonModule, RouterLink],
   templateUrl: './mfa.component.html',
-  styleUrl: './mfa.component.scss'
+  styleUrl: './mfa.component.scss',
 })
 export class MfaComponent {
   dialog = inject(MatDialog);
@@ -27,7 +22,7 @@ export class MfaComponent {
 
   modalPolitics() {
     this.dialog.open(ModalPoliticsComponent, {
-      width: '30%'
+      width: '30%',
     });
   }
 }
